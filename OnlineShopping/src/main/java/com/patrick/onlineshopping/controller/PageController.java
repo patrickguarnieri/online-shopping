@@ -12,10 +12,10 @@ public class PageController {
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greeting", "Welcome Mr. ");
+		mv.addObject("title", "Home");
+		mv.addObject("userClickHome", true);
 		return mv;
 	}
-	
 	
 	/*==================== REQUEST PARAM =====================*/
 	//http://localhost:8080/OnlineShopping/test?greeting= O valor vai aqui
@@ -34,7 +34,7 @@ public class PageController {
 	
 	/*==================== PATH VARIABLE =====================*/
 	
-	@RequestMapping(value="/test/{greeting}") // (value="greeting", required=false) == Saying that is not obligated.
+/*	@RequestMapping(value="/test/{greeting}") // (value="greeting", required=false) == Saying that is not obligated.
 	public ModelAndView test(@PathVariable("greeting")String greeting) {
 		
 		if (greeting == null) {
@@ -45,7 +45,26 @@ public class PageController {
 		mv.addObject("greeting",greeting);
 		return mv;
 	}
+	*/
 	
+	// When the client click in About us
+	@RequestMapping(value = "/about")
+	public ModelAndView about() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
+		mv.addObject("userClickAbout", true);
+		return mv;
+	}
 	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Contact Us");
+		mv.addObject("userClickContact", true);
+		return mv;
+	}
+		
 	
 }
